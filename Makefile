@@ -10,10 +10,10 @@ help :
 deploy :
 	kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 	kubectl apply -f ./argocd/argocd-ingress.yaml
-	kubectl apply -f ./app/ingress/app-ingress.yaml
+	kubectl apply -f ./app/app-ingress.yaml
 
 .PHONY: destroy
 destroy :
 	kubectl delete -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 	kubectl delete -f ./argocd/argocd-ingress.yaml
-	kubectl delete -f ./app/ingress/app-ingress.yaml
+	kubectl delete -f ./app/app-ingress.yaml

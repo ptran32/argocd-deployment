@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  name: app-ingress
+  namespace: default
+spec:
+  rules:
+    - host: appv1.{MINIKUBE_IP}.xip.io
+      http:
+        paths:
+          - backend:
+              serviceName: helloweb-v1
+              servicePort: 80
+            path: /
+    - host: appv2.{MINIKUBE_IP}.xip.io
+      http:
+        paths:
+          - backend:
+              serviceName: helloweb-v2
+              servicePort: 80
+            path: /

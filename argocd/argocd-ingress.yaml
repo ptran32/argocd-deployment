@@ -11,7 +11,7 @@ metadata:
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   rules:
-  - host: argocd.192.168.64.53.xip.io
+  - host: argocd.{MINIKUBE_IP}.xip.io
     http:
       paths:
       - backend:
@@ -21,4 +21,4 @@ spec:
   tls:
   - hosts:
     - argocd.example.com
-    secretName: argocd-secret # do not change, this is provided by Argo CD
+    secretName: argocd-secret

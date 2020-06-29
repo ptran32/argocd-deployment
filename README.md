@@ -8,6 +8,14 @@ You can found more details on my blog:
 
 https://ptran32.github.io/2020-05-28-continuous-k8s-deployment-with-argocd/
 
+
+# Fork this repo
+ArgoCD relies on syncing a remote repo with the cluster.
+Forking this repo allows you to trigger changes in your cluster, and play with the tool.
+
+Ingress resources defined in the app folder redirect to my minikube ip, which might different from yours.
+So forking is the only way I've found to integrate ingress and make it work regardless who uses it. (might improve it in the future)
+
 # Kubernetes Install
 
 Start kubernetes locally
@@ -38,6 +46,7 @@ sed -i "" "s/{MINIKUBE_IP}/$(minikube ip)/g" app/app-ingress.yaml argocd/argocd-
 
 Deploy the argoCD CRD and configure ingress in the cluster
 ```
+kubectl create namespace argocd
 make deploy
 ```
 

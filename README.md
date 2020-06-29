@@ -1,6 +1,8 @@
 # argocd-deployment
 Sample projet to show ArgoCD features
 
+![Image of Yaktocat](https://github.com/ptran32/argocd-deployment/blob/master/img/argo-ui-schema.png)
+
 # More details
 You can found more details on my blog:
 
@@ -23,12 +25,20 @@ Get the cluster IP ( Note it somewhere, we will need it after for ingress config
 minikube ip 
 ```
 
+# Configure ingress (for easier access to app and argocd)
+From the root repository, use the command below to add the minikube IP to ingress resources.
+
+The command works on mac, the “” at the beginning might not work on linux. If not, replace the {MINIKUBE_IP} placeholders in app/app-ingtess.yaml and argocd/argocd-ingress.yaml
+
+```
+sed -i "" "s/{MINIKUBE_IP}/$(minikube ip)/g" app/app-ingress.yaml argocd/argocd-ingress.yaml
+```
+
 # ArgoCD Install
 
-Deploy the argoCD CRD in the cluster
+Deploy the argoCD CRD and configure ingress in the cluster
 ```
-kubectl create namespace argocd
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+make deploy
 ```
 
 # argoCD UI

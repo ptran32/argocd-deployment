@@ -7,14 +7,14 @@ metadata:
   namespace: default
 spec:
   rules:
-    - host: appv1.{MINIKUBE_IP}.xip.io
+    - host: appv1.192.168.64.53.xip.io
       http:
         paths:
           - backend:
               serviceName: helloweb-v1
               servicePort: 80
             path: /
-    - host: appv2.{MINIKUBE_IP}.xip.io
+    - host: appv2.192.168.64.53.xip.io
       http:
         paths:
           - backend:

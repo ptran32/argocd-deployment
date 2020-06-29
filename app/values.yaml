@@ -47,7 +47,7 @@ ingress:
     kubernetes.io/tls-acme: "true"
   }
   hosts:
-    - host: 192.168.64.54.xip.io # Replace with the output of minikube ip command
+    - host: app.192.168.64.54.xip.io # Replace with the output of minikube ip command
       paths:
         - "/"
   tls: []
